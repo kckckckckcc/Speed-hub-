@@ -1,3 +1,78 @@
 -- Hussein Hub - Speed Script
 -- by TikTok hussein_313_113
-local a=string.char;local b=Instance.new;local c=UDim2.new;local d=Color3.fromRGB;local e=game;local f=b(a(83,99,114,101,101,110,71,117,105));f.Parent=e.CoreGui;local g=b(a(70,114,97,109,101),f);g.BackgroundColor3=d(20,20,20);g.Size=c(0,260,0,180);g.Position=c(0.35,0,0.35,0);g.Active=true;g.Draggable=true;local h=b(a(84,101,120,116,76,97,98,101),g);h.Text=a(226,154,161,32,72,117,115,115,101,105,110,32,72,117,98,32,226,154,161);h.Size=c(1,0,0,40);h.BackgroundColor3=d(40,40,40);h.TextColor3=d(255,255,255);h.Font=Enum.Font.SourceSansBold;h.TextScaled=true;local i=b(a(84,101,120,116,66,111,120),g);i.Size=c(0,200,0,30);i.Position=c(0,30,0,50);i.PlaceholderText="اكتب السرعة";i.Text="";i.BackgroundColor3=d(35,35,35);i.TextColor3=d(255,255,255);local j=b(a(84,101,120,116,66,117,116,116,111,110),g);j.Size=c(0,200,0,30);j.Position=c(0,30,0,90);j.Text="تفعيل السرعة";j.BackgroundColor3=d(50,150,50);j.TextColor3=d(255,255,255);local k=b(a(84,101,120,116,66,117,116,116,111,110),g);k.Size=c(0,200,0,30);k.Position=c(0,30,0,130);k.Text="رجوع طبيعي";k.BackgroundColor3=d(150,50,50);k.TextColor3=d(255,255,255);local l=b(a(84,101,120,116,66,117,116,116,111,110),g);l.Size=c(0,30,0,30);l.Position=c(1,-35,0,5);l.Text="X";l.BackgroundColor3=d(200,50,50);l.TextColor3=d(255,255,255);j.MouseButton1Click:Connect(function()local m=e.Players.LocalPlayer;local n=m.Character or m.CharacterAdded:Wait();local o=n:FindFirstChildOfClass(a(72,117,109,97,110,111,105,100));if o and tonumber(i.Text)then o.WalkSpeed=tonumber(i.Text)end end);k.MouseButton1Click:Connect(function()local m=e.Players.LocalPlayer;local n=m.Character or m.CharacterAdded:Wait();local o=n:FindFirstChildOfClass(a(72,117,109,97,110,111,105,100));if o then o.WalkSpeed=16 end end);l.MouseButton1Click:Connect(function()f:Destroy()end)
+
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local Title = Instance.new("TextLabel")
+local SpeedBox = Instance.new("TextBox")
+local SetSpeedBtn = Instance.new("TextButton")
+local ResetBtn = Instance.new("TextButton")
+local ExitBtn = Instance.new("TextButton")
+
+ScreenGui.Parent = game.CoreGui
+
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+Frame.Size = UDim2.new(0, 260, 0, 180)
+Frame.Position = UDim2.new(0.35, 0, 0.35, 0)
+Frame.Active = true
+Frame.Draggable = true
+
+Title.Parent = Frame
+Title.Text = "⚡ Hussein Hub ⚡"
+Title.Size = UDim2.new(1, 0, 0, 40)
+Title.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title.Font = Enum.Font.SourceSansBold
+Title.TextScaled = true
+
+SpeedBox.Parent = Frame
+SpeedBox.Size = UDim2.new(0, 200, 0, 30)
+SpeedBox.Position = UDim2.new(0, 30, 0, 50)
+SpeedBox.PlaceholderText = "اكتب السرعة"
+SpeedBox.Text = ""
+SpeedBox.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+SpeedBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+
+SetSpeedBtn.Parent = Frame
+SetSpeedBtn.Size = UDim2.new(0, 200, 0, 30)
+SetSpeedBtn.Position = UDim2.new(0, 30, 0, 90)
+SetSpeedBtn.Text = "تفعيل السرعة"
+SetSpeedBtn.BackgroundColor3 = Color3.fromRGB(50, 150, 50)
+SetSpeedBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+
+ResetBtn.Parent = Frame
+ResetBtn.Size = UDim2.new(0, 200, 0, 30)
+ResetBtn.Position = UDim2.new(0, 30, 0, 130)
+ResetBtn.Text = "رجوع طبيعي"
+ResetBtn.BackgroundColor3 = Color3.fromRGB(150, 50, 50)
+ResetBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+
+ExitBtn.Parent = Frame
+ExitBtn.Size = UDim2.new(0, 30, 0, 30)
+ExitBtn.Position = UDim2.new(1, -35, 0, 5)
+ExitBtn.Text = "X"
+ExitBtn.BackgroundColor3 = Color3.fromRGB(200, 50, 50)
+ExitBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+
+SetSpeedBtn.MouseButton1Click:Connect(function()
+    local plr = game.Players.LocalPlayer
+    local char = plr.Character or plr.CharacterAdded:Wait()
+    local humanoid = char:FindFirstChildOfClass("Humanoid")
+    if humanoid and tonumber(SpeedBox.Text) then
+        humanoid.WalkSpeed = tonumber(SpeedBox.Text)
+    end
+end)
+
+ResetBtn.MouseButton1Click:Connect(function()
+    local plr = game.Players.LocalPlayer
+    local char = plr.Character or plr.CharacterAdded:Wait()
+    local humanoid = char:FindFirstChildOfClass("Humanoid")
+    if humanoid then
+        humanoid.WalkSpeed = 16
+    end
+end)
+
+ExitBtn.MouseButton1Click:Connect(function()
+    ScreenGui:Destroy()
+end)
