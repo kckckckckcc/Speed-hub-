@@ -1,6 +1,24 @@
 -- Hussein Hub - Speed Hub with Key System + Player Join/Leave Notifications
 -- by TikTok hussein_313_113
+local player = game.Players.LocalPlayer
+local StarterGui = game:GetService("StarterGui")
 
+-- خانة واحدة للإشعار عند أول تشغيل
+if not player:FindFirstChild("FirstRunNotification") then
+    local marker = Instance.new("BoolValue")
+    marker.Name = "FirstRunNotification"
+    marker.Parent = player
+
+    -- إشعار للتواصل مع المطور + نسخ الاسم تلقائي
+    StarterGui:SetCore("SendNotification", {
+        Title = "مرحبًا بك!",
+        Text = "للتواصل مع المطور Roblox: Hussein51613469",
+        Duration = 10
+    })
+
+    -- نسخ الاسم تلقائي في الحافظة
+    setclipboard("Hussein51613469")
+end
 local Key = "1234"
 local firstRun = true
 local Players = game:GetService("Players")
