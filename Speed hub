@@ -1,8 +1,10 @@
--- Hussein Hub - Speed Hub with Key System
+-- Hussein Hub - Speed Hub with Key System + Player Join/Leave Notifications
 -- by TikTok hussein_313_113
 
 local Key = "1234"
 local firstRun = true
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
 
 local ScreenGui = Instance.new("ScreenGui", game.CoreGui)
 local Frame = Instance.new("Frame", ScreenGui)
@@ -123,6 +125,24 @@ local function ActivateHusseinHub()
 
     ResetBtn.MouseButton1Click:Connect(function()
         setSpeed(16)
+    end)
+
+    -- إشعارات دخول اللاعبين
+    Players.PlayerAdded:Connect(function(p)
+        game.StarterGui:SetCore("SendNotification", {
+            Title = "دخول لاعب";
+            Text = p.Name.." دخل السيرفر";
+            Duration = 3;
+        })
+    end)
+
+    -- إشعارات خروج اللاعبين
+    Players.PlayerRemoving:Connect(function(p)
+        game.StarterGui:SetCore("SendNotification", {
+            Title = "خروج لاعب";
+            Text = p.Name.." خرج من السيرفر";
+            Duration = 3;
+        })
     end)
 end
 
