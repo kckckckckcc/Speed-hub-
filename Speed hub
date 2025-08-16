@@ -1,78 +1,140 @@
--- Hussein Hub - Speed Script
+-- Hussein Hub - Key System + Hidden Telegram Link
 -- by TikTok hussein_313_113
 
-local ScreenGui = Instance.new("ScreenGui")
-local Frame = Instance.new("Frame")
-local Title = Instance.new("TextLabel")
-local SpeedBox = Instance.new("TextBox")
-local SetSpeedBtn = Instance.new("TextButton")
-local ResetBtn = Instance.new("TextButton")
-local ExitBtn = Instance.new("TextButton")
+local key = "1234" -- المفتاح الصحيح
+local telegramLink = "https://t.me/jdkdosjdjdf" -- الرابط المخفي
 
-ScreenGui.Parent = game.CoreGui
-
-Frame.Parent = ScreenGui
-Frame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
-Frame.Size = UDim2.new(0, 260, 0, 180)
+-- واجهة التحقق
+local ScreenGui = Instance.new("ScreenGui", game.CoreGui)
+local Frame = Instance.new("Frame", ScreenGui)
+Frame.Size = UDim2.new(0, 300, 0, 180)
 Frame.Position = UDim2.new(0.35, 0, 0.35, 0)
+Frame.BackgroundColor3 = Color3.fromRGB(20,20,20)
 Frame.Active = true
 Frame.Draggable = true
 
-Title.Parent = Frame
-Title.Text = "⚡ Hussein Hub ⚡"
-Title.Size = UDim2.new(1, 0, 0, 40)
-Title.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+-- العنوان
+local Title = Instance.new("TextLabel", Frame)
+Title.Size = UDim2.new(1,0,0,30)
+Title.Text = "🔑 Hussein Hub - Key System"
+Title.TextColor3 = Color3.fromRGB(255,255,255)
+Title.BackgroundColor3 = Color3.fromRGB(40,40,40)
 Title.Font = Enum.Font.SourceSansBold
 Title.TextScaled = true
 
-SpeedBox.Parent = Frame
-SpeedBox.Size = UDim2.new(0, 200, 0, 30)
-SpeedBox.Position = UDim2.new(0, 30, 0, 50)
-SpeedBox.PlaceholderText = "اكتب السرعة"
-SpeedBox.Text = ""
-SpeedBox.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
-SpeedBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+-- خانة كتابة المفتاح
+local KeyBox = Instance.new("TextBox", Frame)
+KeyBox.Size = UDim2.new(0,200,0,30)
+KeyBox.Position = UDim2.new(0,50,0,50)
+KeyBox.PlaceholderText = "اكتب المفتاح هنا"
+KeyBox.TextColor3 = Color3.fromRGB(255,255,255)
+KeyBox.BackgroundColor3 = Color3.fromRGB(35,35,35)
 
-SetSpeedBtn.Parent = Frame
-SetSpeedBtn.Size = UDim2.new(0, 200, 0, 30)
-SetSpeedBtn.Position = UDim2.new(0, 30, 0, 90)
-SetSpeedBtn.Text = "تفعيل السرعة"
-SetSpeedBtn.BackgroundColor3 = Color3.fromRGB(50, 150, 50)
-SetSpeedBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+-- زر التحقق
+local SubmitBtn = Instance.new("TextButton", Frame)
+SubmitBtn.Size = UDim2.new(0,200,0,30)
+SubmitBtn.Position = UDim2.new(0,50,0,90)
+SubmitBtn.Text = "✅ تحقق"
+SubmitBtn.BackgroundColor3 = Color3.fromRGB(50,150,50)
+SubmitBtn.TextColor3 = Color3.fromRGB(255,255,255)
 
-ResetBtn.Parent = Frame
-ResetBtn.Size = UDim2.new(0, 200, 0, 30)
-ResetBtn.Position = UDim2.new(0, 30, 0, 130)
-ResetBtn.Text = "رجوع طبيعي"
-ResetBtn.BackgroundColor3 = Color3.fromRGB(150, 50, 50)
-ResetBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+-- زر نسخ الرابط (مخفي)
+local CopyBtn = Instance.new("TextButton", Frame)
+CopyBtn.Size = UDim2.new(0,200,0,30)
+CopyBtn.Position = UDim2.new(0,50,0,130)
+CopyBtn.Text = "احصل على المفتاح"
+CopyBtn.BackgroundColor3 = Color3.fromRGB(0,120,255)
+CopyBtn.TextColor3 = Color3.fromRGB(255,255,255)
 
-ExitBtn.Parent = Frame
-ExitBtn.Size = UDim2.new(0, 30, 0, 30)
-ExitBtn.Position = UDim2.new(1, -35, 0, 5)
-ExitBtn.Text = "X"
-ExitBtn.BackgroundColor3 = Color3.fromRGB(200, 50, 50)
-ExitBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
-
-SetSpeedBtn.MouseButton1Click:Connect(function()
-    local plr = game.Players.LocalPlayer
-    local char = plr.Character or plr.CharacterAdded:Wait()
-    local humanoid = char:FindFirstChildOfClass("Humanoid")
-    if humanoid and tonumber(SpeedBox.Text) then
-        humanoid.WalkSpeed = tonumber(SpeedBox.Text)
+CopyBtn.MouseButton1Click:Connect(function()
+    -- نسخ الرابط للتليجرام إلى الحافظة
+    if setclipboard then
+        setclipboard(telegramLink)
     end
+    CopyBtn.Text = "✅ تم النسخ"
+    wait(1.5)
+    CopyBtn.Text = "احصل على المفتاح"
 end)
 
-ResetBtn.MouseButton1Click:Connect(function()
-    local plr = game.Players.LocalPlayer
-    local char = plr.Character or plr.CharacterAdded:Wait()
-    local humanoid = char:FindFirstChildOfClass("Humanoid")
-    if humanoid then
-        humanoid.WalkSpeed = 16
-    end
-end)
+-- سكربت السرعة (Hussein Hub)
+local function ActivateHusseinHub()
+    local SGui = Instance.new("ScreenGui", game.CoreGui)
+    local F = Instance.new("Frame", SGui)
+    F.Size = UDim2.new(0,260,0,180)
+    F.Position = UDim2.new(0.35,0,0.35,0)
+    F.BackgroundColor3 = Color3.fromRGB(20,20,20)
+    F.Active = true
+    F.Draggable = true
 
-ExitBtn.MouseButton1Click:Connect(function()
-    ScreenGui:Destroy()
+    local T = Instance.new("TextLabel", F)
+    T.Text = "⚡ Hussein Hub ⚡"
+    T.Size = UDim2.new(1,0,0,40)
+    T.BackgroundColor3 = Color3.fromRGB(40,40,40)
+    T.TextColor3 = Color3.fromRGB(255,255,255)
+    T.Font = Enum.Font.SourceSansBold
+    T.TextScaled = true
+
+    local SpeedBox = Instance.new("TextBox", F)
+    SpeedBox.Size = UDim2.new(0,200,0,30)
+    SpeedBox.Position = UDim2.new(0,30,0,50)
+    SpeedBox.PlaceholderText = "اكتب السرعة"
+    SpeedBox.BackgroundColor3 = Color3.fromRGB(35,35,35)
+    SpeedBox.TextColor3 = Color3.fromRGB(255,255,255)
+
+    local SetSpeedBtn = Instance.new("TextButton", F)
+    SetSpeedBtn.Size = UDim2.new(0,200,0,30)
+    SetSpeedBtn.Position = UDim2.new(0,30,0,90)
+    SetSpeedBtn.Text = "تفعيل السرعة"
+    SetSpeedBtn.BackgroundColor3 = Color3.fromRGB(50,150,50)
+    SetSpeedBtn.TextColor3 = Color3.fromRGB(255,255,255)
+
+    local ResetBtn = Instance.new("TextButton", F)
+    ResetBtn.Size = UDim2.new(0,200,0,30)
+    ResetBtn.Position = UDim2.new(0,30,0,130)
+    ResetBtn.Text = "رجوع طبيعي"
+    ResetBtn.BackgroundColor3 = Color3.fromRGB(150,50,50)
+    ResetBtn.TextColor3 = Color3.fromRGB(255,255,255)
+
+    local ExitBtn = Instance.new("TextButton", F)
+    ExitBtn.Size = UDim2.new(0,30,0,30)
+    ExitBtn.Position = UDim2.new(1,-35,0,5)
+    ExitBtn.Text = "X"
+    ExitBtn.BackgroundColor3 = Color3.fromRGB(200,50,50)
+    ExitBtn.TextColor3 = Color3.fromRGB(255,255,255)
+
+    SetSpeedBtn.MouseButton1Click:Connect(function()
+        local plr = game.Players.LocalPlayer
+        local char = plr.Character or plr.CharacterAdded:Wait()
+        local humanoid = char:FindFirstChildOfClass("Humanoid")
+        if humanoid and tonumber(SpeedBox.Text) then
+            humanoid.WalkSpeed = tonumber(SpeedBox.Text)
+        end
+    end)
+
+    ResetBtn.MouseButton1Click:Connect(function()
+        local plr = game.Players.LocalPlayer
+        local char = plr.Character or plr.CharacterAdded:Wait()
+        local humanoid = char:FindFirstChildOfClass("Humanoid")
+        if humanoid then
+            humanoid.WalkSpeed = 16
+        end
+    end)
+
+    ExitBtn.MouseButton1Click:Connect(function()
+        SGui:Destroy()
+    end)
+end
+
+-- تحقق من المفتاح
+SubmitBtn.MouseButton1Click:Connect(function()
+    if KeyBox.Text == key then
+        Frame:Destroy()
+        ActivateHusseinHub()
+    else
+        KeyBox.Text = "❌ خطأ بالمفتاح"
+        KeyBox.TextColor3 = Color3.fromRGB(255,0,0)
+        wait(1.5)
+        KeyBox.Text = ""
+        KeyBox.TextColor3 = Color3.fromRGB(255,255,255)
+    end
 end)
