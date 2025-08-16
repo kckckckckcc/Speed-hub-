@@ -1,8 +1,7 @@
--- Hussein Hub - Auto One-Time Key
+-- Hussein Hub - Key System Auto Key
 -- by TikTok hussein_313_113
 
 local key = "1234" -- المفتاح الصحيح
-local firstRun = true -- هل هذه أول مرة تشغيل السكربت؟
 
 -- واجهة
 local ScreenGui = Instance.new("ScreenGui", game.CoreGui)
@@ -29,19 +28,29 @@ KeyBox.PlaceholderText = "المفتاح هنا"
 KeyBox.TextColor3 = Color3.fromRGB(255,255,255)
 KeyBox.BackgroundColor3 = Color3.fromRGB(35,35,35)
 
+-- زر الحصول على المفتاح
+local GetKeyBtn = Instance.new("TextButton", Frame)
+GetKeyBtn.Size = UDim2.new(0,200,0,30)
+GetKeyBtn.Position = UDim2.new(0,50,0,90)
+GetKeyBtn.Text = "حصول على المفتاح"
+GetKeyBtn.BackgroundColor3 = Color3.fromRGB(0,120,255)
+GetKeyBtn.TextColor3 = Color3.fromRGB(255,255,255)
+
 -- زر التحقق
 local SubmitBtn = Instance.new("TextButton", Frame)
 SubmitBtn.Size = UDim2.new(0,200,0,30)
-SubmitBtn.Position = UDim2.new(0,50,0,90)
+SubmitBtn.Position = UDim2.new(0,50,0,130)
 SubmitBtn.Text = "✅ تحقق"
 SubmitBtn.BackgroundColor3 = Color3.fromRGB(50,150,50)
 SubmitBtn.TextColor3 = Color3.fromRGB(255,255,255)
 
--- إذا كانت هذه أول مرة، ضع المفتاح تلقائيًا
-if firstRun then
-    KeyBox.Text = key
-    firstRun = false
-end
+-- وظيفة زر الحصول على المفتاح
+GetKeyBtn.MouseButton1Click:Connect(function()
+    KeyBox.Text = key -- يحط المفتاح مباشرة في خانة المفتاح
+    GetKeyBtn.Text = "✅ تم وضع المفتاح"
+    wait(1.5)
+    GetKeyBtn.Text = "حصول على المفتاح"
+end)
 
 -- سكربت السرعة
 local function ActivateHusseinHub()
